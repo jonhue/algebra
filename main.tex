@@ -1,0 +1,37 @@
+\documentclass{tufte-book}
+
+\input{settings}
+\input{commands}
+
+\title{Abstract Algebra}
+\author{Jonas Hübotter}
+\date{Fall 2020}
+% \publisher{}
+\input{pages/titlepage}
+
+\begin{document}
+    \frontmatter
+
+    \maketitle
+
+    \input{pages/acknowledgement}
+
+    \tableofcontents
+
+    \mainmatter
+
+	\input{chapters/01_groups}
+    \input{chapters/02_rings}
+    \input{chapters/03_fields}
+
+    \backmatter
+
+    \input{pages/notation}
+
+    \nocite{*}
+    \bibliography{sources}
+
+    \begin{fullwidth}
+    \printindex
+    \end{fullwidth}
+\end{document}
