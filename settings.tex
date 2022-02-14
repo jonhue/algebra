@@ -34,9 +34,6 @@
 \makeindex[intoc]
 \indexsetup{headers={\indexname}{\indexname}}
 
-%--------Enumerations--------
-\setlist{itemsep=0pt,topsep=2pt}
-
 %--------Theorem Environments--------
 \newtheorem{thm}{Theorem}[chapter]
 \newtheorem{cor}[thm]{Corollary}
@@ -49,6 +46,29 @@
 \newtheorem{rmk}[thm]{Remark}
 
 \numberwithin{equation}{chapter}
+
+%--------Enumerations--------
+\setlist[itemize]{noitemsep,topsep=2pt}
+
+\newlist{corlist}{enumerate}{1}
+\setlist[corlist]{label=(\alph{corlisti}), ref=\thethm.(\alph{corlisti}),noitemsep,topsep=2pt,leftmargin=2\parindent}
+\Crefname{corlisti}{Corollary}{Corollaries}
+
+\newlist{lemlist}{enumerate}{1}
+\setlist[lemlist]{label=(\alph{lemlisti}), ref=\thethm.(\alph{lemlisti}),noitemsep,topsep=2pt,leftmargin=2\parindent}
+\Crefname{lemlisti}{Lemma}{Lemmas}
+
+\newlist{nestedlemlist}{enumerate}{1}
+\setlist[nestedlemlist]{label=(\roman{nestedlemlisti}), ref=\thethm.(\roman{nestedlemlisti}),noitemsep,topsep=2pt}
+\Crefname{nestedlemlisti}{Lemma}{Lemmas}
+
+\newlist{defnlist}{enumerate}{1}
+\setlist[defnlist]{label=(\alph{defnlisti}), ref=\thethm.(\alph{defnlisti}),noitemsep,topsep=2pt,leftmargin=2\parindent}
+\Crefname{defnlisti}{Definition}{Definitions}
+
+\newlist{rmklist}{enumerate}{1}
+\setlist[rmklist]{label=(\alph{rmklisti}), ref=\thethm.(\alph{rmklisti}),noitemsep,topsep=2pt,leftmargin=2\parindent}
+\Crefname{rmklisti}{Remark}{Remarks}
 
 %--------Pseudocode--------
 \usepackage{xcolor,amsmath}

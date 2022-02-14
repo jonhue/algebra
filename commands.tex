@@ -16,6 +16,8 @@
 \newcommand*{\defeq}{\overset{.}{=}}
 \newcommand*{\eqdef}{\overset{.}{=}}
 
+\newcommand{\cupdot}{\mathbin{\mathaccent\cdot\cup}}
+
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
@@ -24,6 +26,8 @@
 \DeclarePairedDelimiter\parentheses{(}{)}
 \DeclarePairedDelimiter\brackets{[}{]}
 \DeclarePairedDelimiter\braces{\{}{\}}
+
+\NewDocumentCommand{\divides}{mm}{#1 \mid #2}
 
 \NewDocumentCommand{\inv}{m}{#1^{-1}}
 
@@ -38,6 +42,7 @@
 \newcommand{\C}{\mathbb{C}}
 
 \NewDocumentCommand{\woZ}{m}{#1 \setminus \{0\}}
+\NewDocumentCommand{\wInfty}{m}{#1 \cup \{\infty\}}
 
 \NewDocumentCommand{\GL}{mm}{\mathrm{GL}_{#1}(#2)}
 \NewDocumentCommand{\SL}{mm}{\mathrm{SL}_{#1}(#2)}
@@ -98,6 +103,7 @@
 % \newcommand{\vvarphi}{\vec{\varphi}}
 % \newcommand{\vtheta}{\vec{\theta}}
 \newcommand{\mA}{\mat{A}}
+\newcommand{\mB}{\mat{B}}
 % \newcommand{\mC}{\mat{C}}
 % \newcommand{\mF}{\mat{F}}
 % \newcommand{\mH}{\mat{H}}
