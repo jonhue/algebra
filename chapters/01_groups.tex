@@ -271,10 +271,10 @@ The subgroup structure of a group $G$ can be graphically represented in a \emph{
 Let $U \subgroup G$ be a subgroup.
 \begin{defnlist}
     \item For $a \in G$, \begin{align}
-        aU &\defeq \{a \cdot u \mid u \in U\}, \\
+        aU &\defeq \{a \cdot u \mid u \in U\}, \label{eq:left_coset} \\
         Ua &\defeq \{u \cdot a \mid u \in U\},
     \end{align} are the left\index{left coset} and right\index{right coset} \emph{coset}\index{coset} of $U$ in $G$, respectively.
-    \item The \emph{index}\index{index} $[G : U] \defeq |\{aU \mid a \in G\}|$ of $U$ in $G$ is defined as the number of cosets of $U$ in $G$.\footnote{The number of left cosets is identical to the number of right cosets.}
+    \item\label{defn:index} The \emph{index}\index{index} $[G : U] \defeq |\{aU \mid a \in G\}|$ of $U$ in $G$ is defined as the number of cosets of $U$ in $G$.\footnote{The number of left cosets is identical to the number of right cosets.}
 \end{defnlist}
 \end{defn}
 
@@ -282,7 +282,7 @@ Let $U \subgroup G$ be a subgroup.
 For all $a, b \in G$, we have
 \begin{lemlist}
     \item $aU = U \iff a \in U$
-    \item $aU = bU \iff \inv{a} b \in U$
+    \item\label{lem:cosets_eq} $aU = bU \iff \inv{a} b \in U$
     \item $aU \cap bU \neq \emptyset \iff aU = bU$
     \item $G = \bigcup_{a \in G} aU$
     \item\label{lem:cosets_size} $|aU| = |U|$
@@ -296,10 +296,10 @@ If $G$ is a finite group and $U \subgroup G$ is some subgroup, then \begin{align
     |G| = |U| \cdot [G : U].
 \end{align} In particular, $|U|$ and $[G : U]$ are divisors of $|G|$.
 \end{thm} \begin{proof}
-Let $r \defeq [G:U]$. Then we can write $G$ as a disjoint union of cosets, \begin{align*}
+Let $r \defeq \Index{G}{U}$. Then we can write $G$ as a disjoint union of cosets, \begin{align*}
     G = a_1 U \cupdot a_2 U \cupdot \cdots \cupdot a_r U.
 \end{align*} We have, \begin{align*}
-    |G| = \sum_{i=1}^r |a_i U| = r \cdot |U| = [G:U] \cdot |U|. \margintag{using that $|a_i U| = |U|$ by \cref{lem:cosets_size}} &\qedhere
+    |G| = \sum_{i=1}^r |a_i U| = r \cdot |U| = \Index{G}{U} \cdot |U|. \margintag{using that $|a_i U| = |U|$ by \cref{lem:cosets_size}} &\qedhere
 \end{align*}
 \end{proof}
 
@@ -437,7 +437,7 @@ If $\varphi : G \to H$ is an isomorphism, then $\inv{\varphi} : H \to G$ is an i
 \begin{itemize}
     \item Given a group $G$ and an arbitrary element $g \in G$, \begin{align}
         i_g : G \to G, x \mapsto g \cdot x \cdot \inv{g},
-    \end{align} is the \emph{inner automorphism}\index{inner automorphism} of the so-called \emph{conjugating element}\index{conjugating element} $g$. This isomorphism corresponds to the conjugation group action, which we will encounter again in \cref{sec:groups:actions}.
+    \end{align} is the \emph{inner automorphism}\index{inner automorphism} of the so-called \emph{conjugating element}\index{conjugating element} $g$. This isomorphism corresponds to the conjugation group action (also called \emph{(left) conjugation}\index{conjugation} by $g$), which we will encounter again in \cref{sec:groups:actions}.
     
     \item $\exp : (\R,+) \to (\RgZ,\cdot), x \mapsto e^x$ is an isomorphism.\marginfootnote{$\exp$ is a homomorphism due to $e^{x+y} = e^x e^y$. As $\exp$ is strictly monotonically increasing, it is bijective.}
 \end{itemize}
@@ -472,7 +472,7 @@ This follows directly from using \cref{eq:normal_subgroup} for $a \in G$ and $\i
 \begin{lem}[Sufficient Conditions for Normal Subgroups]
 \leavevmode\begin{lemlist}
     \item If $\varphi : G \to H$ is a homomorphism, then $\ker{\varphi} \normal G$.
-    \item Every subgroup $U \subgroup G$ with index $[G:U] = 2$ is a normal subgroup of $G$.
+    \item Every subgroup $U \subgroup G$ with index $\Index{G}{U} = 2$ is a normal subgroup of $G$.
     \item\label{lem:normal_subgroup_c} If $U$ is the only subgroup of order $m < \infty$ of $G$, then $U \normal G$.
     \item If $G$ is abelian, then all subgroups of $G$ are normal.
 \end{lemlist}
@@ -497,10 +497,78 @@ This follows directly from using \cref{eq:normal_subgroup} for $a \in G$ and $\i
 \begin{itemize}
     \item $A_n \normal S_n$ as $A_n = \ker{\sgn}$, see \cref{eq:alternating_group}
     \item $\SL{n}{\R} \normal \GL{n}{\R}$ as $\SL{n}{\R} = \ker{\det}$, see \cref{eq:det_kernel}
+    \item ${\Inn{G} \defeq \{i_g \mid g \in G\}}$ known as the \emph{inner automorphism group}\index{inner automorphism group} is a normal subgroup of the automorphism group, $\Inn{G} \normal \Aut{G}$
     \item For the symmetric group $S_3$, we have the normal subgroups \begin{itemize}
         \item $\{e\}, G \normal G$
         \item $A_3 = \gen{(1\ 2\ 3)} \normal G$
     \end{itemize} by \cref{lem:normal_subgroup_c}. Simple calculations confirm that the subgroups of order 2 are not normal.
+\end{itemize}
+\end{ex}
+
+\begin{thm}[Quotient Group]\label{thm:quotient_group}
+Let $N \normal G$. Then the set \begin{align}
+    \Quot{G}{N} \defeq \{a N \mid a \in G\}
+\end{align} is a group under the operation, \begin{align}
+    a N \cdot b N \defeq (a \cdot b) N \quad \forall a, b \in G. \label{eq:quotient_group_op}
+\end{align} $\Quot{G}{N}$ is called the \emph{quotient group}\index{quotient group} $G$ modulo $N$.
+\end{thm} Thus, the quotient group is the group of (left) cosets of a normal subgroup. In particular, if $G$ is finite, we have, \begin{align}
+    |\Quot{G}{N}| = \Index{G}{N} = \frac{|G|}{|N|},
+\end{align} due to the \hyperref[defn:index]{definition of the index} and \hyperref[thm"lagrange]{Lagrange's theorem}. \begin{proof}
+In proving that $\Quot{G}{N}$ is a group, we will see why we need the restriction of normal subgroups.
+
+\begin{itemize}
+    \item First, we need to show that the group operation \eqref{eq:quotient_group_op} is well-defined. Let us fix $a_1, a_2, b_1, b_2 \in G$ such that $a_1 N = a_2 N$ and $b_1 N = b_2 N$. We need to show $a_1 b_1 N = a_2 b_2 N$.
+    
+    As $N$ contains the neutral element $e$, we know $a_1 \in a_1 N$ and $a_2 \in a_2 N$. Therefore, $\exists n \in N.\ a_1 = a_2 n$ and, analogously, $\exists \Tilde{n} \in N.\ b_1 = b_2 \Tilde{n}$. We have, \begin{align*}
+        a_1 b_1 = a_2 n b_2 \Tilde{n} = a_2 b_2 (\inv{b_2} n b_2 \Tilde{n}).
+    \end{align*} Using that $N$ is normal, $\inv{b_2} n b_2 \in N$. Then, as $N$ is a subgroup, we also have $\inv{b_2} n b_2 \Tilde{n} \in N$. This shows that $a_1 b_1 N = a_2 b_2 N$.
+    \item $e N = N$ is the neutral element.
+    \item The group operation is closed under $\Quot{G}{N}$ by definition.
+    \item $\inv{(a N)} = \inv{a} N$ clearly is the inverse of $a N$.
+\end{itemize} $\implies \Quot{G}{N}$ is a group.
+\end{proof}
+
+\begin{ex}{Residue classes}{}
+We will consider the quotient group $\Quot{\Z}{n\Z}$ of the group $(\Z,+)$ for any fixed $n \in \NZ$. We write, \begin{align}
+    n\Z \defeq \gen{n} = \{n \cdot k \mid k \in \Z\}.
+\end{align}
+
+Observe that the left cosets are of the form \begin{align}
+    a + n\Z = \{a + n \cdot k \mid k \in \Z\}.
+\end{align} They are also called \emph{residue classes}\index{residue classes} modulo $n$.
+
+To specify $\Quot{\Z}{n\Z}$, we are interested in finding when ${a + n\Z = b + n\Z}$ holds. We have, \begin{align}
+    a + n\Z = b + n\Z \overset{\ref{lem:cosets_eq}}{\iff} a - b \in n\Z \overset{\ref{eq:left_coset}}{\iff} \divides{n}{a - b}.
+\end{align} Equivalently to ${\divides{n}{a - b}}$, we say that $a$ is \emph{congruent}\index{congruent} $b$ modulo $n$ (denoted ${a \equiv b \mod n}$). For ${n > 0}$ this is equivalent to $a$ and $b$ having the same residue ${r \in \{0, 1, \dots, n - 1\}}$ when dividing by $n$.
+
+From now on, we will assume ${n > 0}$. We denote elements by \begin{align}
+    \rep{a} \defeq a + n\Z,
+\end{align} where $a$ is referred to as the \emph{representative}\index{representative} of $\rep{a}$. It follows that, \begin{align}
+    \Quot{\Z}{n\Z} = \{\rep{0}, \rep{1}, \dots, \rep{n-1}\}.
+\end{align} By \cref{thm:quotient_group}, $\Quot{\Z}{n\Z}$ with the mapping ``$+$'' is a cyclic group of order $n$. It is often denoted by \begin{align}
+    Z_n \defeq \Quot{\Z}{n\Z} = \gen{\rep{1}}.
+\end{align}
+
+As an example, consider $Z_8 = \{\rep{0}, \rep{1}, \rep{2}, \rep{3}, \rep{4}, \rep{5}, \rep{6}, \rep{7}\}$. We have, \vspace{-10pt}\begin{itemize}
+    \item $\rep{2} + \rep{5} = \rep{7}$,
+    \item $\rep{2} + \rep{6} = \rep{8} = \rep{0}$, and
+    \item $\rep{-6} = \rep{2}$.
+\end{itemize}
+\end{ex}
+
+\begin{defn}[Cokernel]
+The \emph{cokernel}\index{cokernel} of a homomorphism ${\varphi : G \to H}$ is the quotient group $\Quot{H}{\im{\varphi}}$.
+\end{defn}
+
+\begin{ex}{Outer automorphism group}{}
+Automorphisms that are not inner automorphisms are called \emph{outer automorphisms}\index{outer automorphism}. The \emph{outer automorphism group}\index{outer automorphism group} is the group of cosets of the inner automorphism group with respect to outer automorphisms, \begin{align}
+    \Out{G} \defeq \Quot{\Aut{G}}{\Inn{G}}.
+\end{align}
+
+Let us define the homomorphism ${\sigma : G \to \Aut{G}, g \mapsto i_g}$. It can be shown that \vspace{-10pt}\begin{itemize}
+    \item $\ker{\sigma} = Z(G)$,
+    \item $\im{\sigma} = \Inn{G}$, and
+    \item the cokernel of $\sigma$ is $\Out{G} = \Quot{\Aut{G}}{\Inn{G}}$.
 \end{itemize}
 \end{ex}
 

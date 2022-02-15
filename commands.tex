@@ -51,9 +51,16 @@
 \NewDocumentCommand{\woZ}{m}{#1 \setminus \{0\}}
 \NewDocumentCommand{\wInfty}{m}{#1 \cup \{\infty\}}
 
+\NewDocumentCommand{\Index}{mm}{[#1:#2]}
+
+\NewDocumentCommand{\rep}{m}{\overline{#1}}
+
 \NewDocumentCommand{\GL}{mm}{\mathrm{GL}_{#1}(#2)}
 \NewDocumentCommand{\SL}{mm}{\mathrm{SL}_{#1}(#2)}
 \NewDocumentCommand{\Aut}{m}{\mathrm{Aut}(#1)}
+\NewDocumentCommand{\Inn}{m}{\mathrm{Inn}(#1)}
+\NewDocumentCommand{\Out}{m}{\mathrm{Out}(#1)}
+\NewDocumentCommand{\Quot}{mm}{#1/#2}
 
 % \newcommand{\MLE}{\mathrm{MLE}}
 % \newcommand{\MAP}{\mathrm{MAP}}
