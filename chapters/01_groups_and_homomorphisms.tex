@@ -341,7 +341,7 @@ We will now consider two groups $(G,\cdot)$ and $(H,\cdot)$. To understand the r
         \forall a, b \in G.\quad \varphi(a \cdot b) = \varphi(a) \cdot \varphi(b). \label{eq:homomorphism}
     \end{align} The homomorphism $\psi : G \to G$ is called \emph{endomorphism}\index{endomorphism} of $G$.
     \item The set of elements that are mapped to the neutral element $e_H$, \begin{align}
-        \ker{\varphi} \defeq \{a \in G \mid \varphi(a) = e_H\} \subseteq G,
+        \ker{\varphi} \defeq \{a \in G \mid \varphi(a) = e_H\} \subseteq G, \label{eq:kernel}
     \end{align} is called the \emph{kernel}\index{kernel} of $\varphi$.
     \item The set of elements in the codomain $H$ that $\varphi$ maps to, \begin{align}
         \im{\varphi} \defeq \{\varphi(a) \mid a \in G\} \subseteq H,
@@ -349,12 +349,12 @@ We will now consider two groups $(G,\cdot)$ and $(H,\cdot)$. To understand the r
 \end{defnlist}
 \end{defn}
 
-\begin{ex}{Homomorphisms}{}
+\begin{ex}{Homomorphisms}{homomorphisms}
 \begin{itemize}
     \item ${\varphi : G \to H, a \mapsto e_H}$ is the \emph{trivial homomorphism}\index{trivial homomorphism}
     
-    \item ${\det : \GL{n}{\R} \to \woZ{\R}, \mA \mapsto \det{\mA}}$ is a homomorphism due to the multiplicativity of the determinant.\marginfootnote{Recall that $\det{(\mA \cdot \mB)} = \det{\mA} \cdot \det{\mB}$.} We have for its kernel, \begin{align}
-        \ker{\det} = \{\mA \in \GL{n}{\R} \mid \det{\mA} = 1\} = \SL{n}{\R}. \label{eq:det_kernel}
+    \item For any field $K$, ${\det : \GL{n}{K} \to \woZ{K}, \mA \mapsto \det{\mA}}$ is a homomorphism due to the multiplicativity of the determinant.\marginfootnote{Recall that $\det{(\mA \cdot \mB)} = \det{\mA} \cdot \det{\mB}$.} We have for its kernel, \begin{align}
+        \ker{\det} = \{\mA \in \GL{n}{K} \mid \det{\mA} = 1\} = \SL{n}{K}. \label{eq:det_kernel}
     \end{align}
     
     \item Let us consider the \emph{sign}\index{sign} of a permutation, \begin{align}
@@ -386,7 +386,7 @@ Let $\varphi : G \to H$ be a homomorphism. Then,
 \end{lemlist}
 \end{lem} \begin{marginfigure}
     \includegraphics[width=\textwidth]{injective_surjective.png}
-    \caption{An illustration of injectivity and surjectivity. When a function $\varphi$ is injective, $\varphi(a) = \varphi(b)$ implies $a = b$.}
+    \caption{An illustration of \emph{injectivity}\index{injective} and \emph{surjectivity}\index{surjective}. When a function $\varphi$ is injective, $\varphi(a) = \varphi(b)$ implies $a = b$. We call a function \emph{bijective}\index{bijective} is it is both injective and surjective, i.e., a one-to-one mapping.}
 \end{marginfigure} \begin{proof}
 \leavevmode\begin{lemlist}
     \item We have $\varphi(e_G) = \varphi(e_G \cdot e_G) = \varphi(e_G) \cdot \varphi(e_G)$, using the compatibility of a homomorphism with the group structure \eqref{eq:homomorphism}. By multiplying with $\inv{\varphi(e_G)}$ from one side, we obtain that this statement is true if and only if $\varphi(e_G) = e_H$.
@@ -423,7 +423,7 @@ Let $\varphi : G \to H$ be a homomorphism. Then,
 \begin{defn}[Isomorphism]
 \leavevmode\begin{defnlist}
     \item The mapping $\varphi : G \to H$ is called an \emph{isomorphism}\index{isomorphism} if $\varphi$ is a homomorphism and bijective. The isomorphism $\psi : G \to G$ is called an \emph{automorphism}\index{automorphism} of $G$.
-    \item $G$ and $H$ are called \emph{isomorphic} (denoted $G \cong H$) if there exists an isomorphism $\varphi : G \to H$.
+    \item $G$ and $H$ are called \emph{isomorphic} (denoted $G \isom H$) if there exists an isomorphism $\varphi : G \to H$.
     \item $\Aut{G} \defeq \{\psi : G \to G \mid \text{$\psi$ automorphism}\}$ forms a group under function composition ``$\circ$''. This group is called the \emph{automorphic group}\index{automorphic group} of $G$.
 \end{defnlist}
 \end{defn}

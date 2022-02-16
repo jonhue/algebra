@@ -55,6 +55,10 @@
 %--------Enumerations--------
 \setlist[itemize]{noitemsep,topsep=2pt}
 
+\newlist{thmlist}{enumerate}{1}
+\setlist[thmlist]{label=(\alph{thmlisti}), ref=\thethm.(\alph{thmlisti}),noitemsep,topsep=2pt,leftmargin=2\parindent}
+\Crefname{thmlisti}{Theorem}{Theorems}
+
 \newlist{corlist}{enumerate}{1}
 \setlist[corlist]{label=(\alph{corlisti}), ref=\thethm.(\alph{corlisti}),noitemsep,topsep=2pt,leftmargin=2\parindent}
 \Crefname{corlisti}{Corollary}{Corollaries}
